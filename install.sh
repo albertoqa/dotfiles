@@ -5,7 +5,7 @@
 
 # list of files to symlink in homedir
 dotfiles_dir=~/Developer/dotfiles/
-dotfiles="aliases bash_profile bash_prompt bashrc curlrc editorconfig exports extras functions gitattributes gitconfig gitignore gvimrc hgignore inputrc path screenrc viminfo vimrc wgetrc"
+dotfiles="aliases bash_profile bash_prompt bashrc exports extras functions gitattributes gitconfig gitignore inputrc path"
 
 mkdir -p ~/.dotfiles_old   # backup folder for all the current dotfiles
 
