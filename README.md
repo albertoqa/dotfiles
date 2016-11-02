@@ -15,8 +15,8 @@ git clone git://github.com/albertoqa/dotfiles.git
 mkdir ~/Developer
 mv dotfiles ~/Developer/dotfiles
 cd ~/Developer/dotfiles
-chmod +x install.sh
-./install.sh
+chmod +x ./bin/install.sh
+./bin/install.sh
 ```
 
 ## Thanks to...
