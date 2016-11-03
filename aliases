@@ -2,7 +2,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 
 # Shortcuts
-alias d="cd ~/Google\ Drive"
+alias d="cd ~/Developer"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
