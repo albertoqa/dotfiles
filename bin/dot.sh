@@ -4,7 +4,7 @@
 # Install script for the dotfiles to the home directory
 
 # list of files to symlink in homedir
-dotfiles_dir=~/Developer/dotfiles/
+dotfiles_dir=~/Developer/dotfiles/  # TODO don't hardcode /Developer/
 dotfiles="aliases bash_profile bash_prompt bashrc exports extras functions gitattributes gitconfig gitignore inputrc path"
 
 mkdir -p ~/.dotfiles_old   # backup folder for all the current dotfiles
