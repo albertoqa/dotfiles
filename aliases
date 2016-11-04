@@ -10,6 +10,8 @@ alias g="git"
 alias h="history"
 alias j="jobs"
 
+alias aliases="cat ~/.aliases"
+
 # Start sonar server for Temperatus project
 # alias startSonar="cd /Users/alberto/Developer/temperatus && mysql.server start && sonar start && sonar-runner"
 
