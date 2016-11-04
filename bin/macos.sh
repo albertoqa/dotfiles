@@ -355,13 +355,13 @@ defaults write com.apple.Safari 'ShowStatusBar' -bool true
 ###############################################################################
 
 # Don't show birthdays Calendar
-# TODO
+defaults write com.apple.iCal "display birthdays calendar" -bool false
 
 # Show week numbers
-# TODO
+defaults write com.apple.iCal "Show Week Numbers" -bool true
 
-# Make text smaller (twice)
-# TODO
+# Make text smaller
+defaults write com.apple.iCal "CalUICanvasOccurrenceFontSize" -int 10
 
 ###############################################################################
 # Contacts                       	                                            #
