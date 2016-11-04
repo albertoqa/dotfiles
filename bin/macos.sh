@@ -165,8 +165,7 @@ defaults write com.apple.spotlight orderedItems -array \
 # Don't show mirroring options in menu bar
 defaults write com.apple.airplay showInMenuBarIfPresent -bool false
 
-# Change resolution to 1440x900
-# TODO
+# TODO is it possible to change resolution with a command?
 
 ###############################################################################
 # Energy Saver                  	                                            #
@@ -480,7 +479,36 @@ defaults write com.apple.AddressBook ABNameSortingFormat -string "sortingFirstNa
 # Terminal                       	                                            #
 ###############################################################################
 
-# TODO
+# default theme to Basic
+defaults write com.apple.Terminal "Default Window Settings" -string "Basic"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Basic"
+
+# configure the basic theme
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:FontAntialias 1" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:rowCount 30" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:UseBoldFonts 1" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowActiveProcessArgumentsInTitle 1" ~/Library/Preferences/com.apple.Terminal.plist
+
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowRepresentedURLPathInTitle 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowTTYNameInTitle 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:BackgroundSettingsForInactiveWindows 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:UseBrightBold 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowWindowSettingsNameInTitle 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:FontWidthSpacing 1,00403225806452" ~/Library/Preferences/com.apple.Terminal.plist
+
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowCommandKeyInTitle 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:BackgroundBlur 0,296188586795261" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:CursorType 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:columnCount 90" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowDimensionsInTitle 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:CursorBlink 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowActiveProcessInTitle 1" ~/Library/Preferences/com.apple.Terminal.plist
+
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowShellCommandInTitle 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowRepresentedURLInTitle 1" ~/Library/Preferences/com.apple.Terminal.plist
+
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:BackgroundColor \"<62706c69 73743030 d4010203 04050615 16582476 65727369 6f6e5824 6f626a65 63747359 24617263 68697665 72542474 6f701200 0186a0a3 07080f55 246e756c 6cd3090a 0b0c0d0e 554e5352 47425c4e 53436f6c 6f725370 61636556 24636c61 73734631 20312031 00100180 02d21011 12135a24 636c6173 736e616d 65582463 6c617373 6573574e 53436f6c 6f72a212 14584e53 4f626a65 63745f10 0f4e534b 65796564 41726368 69766572 d1171854 726f6f74 80010811 1a232d32 373b4148 4e5b6269 6b6d727d 868e919a acafb400 00000000 00010100 00000000 00001900 00000000 00000000 00000000 0000b6>\"" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:Font \"<62706c69 73743030 d4010203 04050618 19582476 65727369 6f6e5824 6f626a65 63747359 24617263 68697665 72542474 6f701200 0186a0a4 07081112 55246e75 6c6cd409 0a0b0c0d 0e0f1056 4e535369 7a65584e 5366466c 61677356 4e534e61 6d655624 636c6173 73234026 00000000 00001010 80028003 5e53464d 6f6e6f2d 52656775 6c6172d2 13141516 5a24636c 6173736e 616d6558 24636c61 73736573 564e5346 6f6e74a2 1517584e 534f626a 6563745f 100f4e53 4b657965 64417263 68697665 72d11a1b 54726f6f 74800108 111a232d 32373c42 4b525b62 69727476 78878c97 a0a7aab3 c5c8cd00 00000000 00010100 00000000 00001c00 00000000 00000000 00000000 0000cf>\"" ~/Library/Preferences/com.apple.Terminal.plist
 
 ###############################################################################
 # Activity Monitor                                                            #
