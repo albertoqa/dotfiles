@@ -21,7 +21,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 # Use dark menu bar and dock
-#TODO
+defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleInterfaceTheme -string "Dark"
+defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleInterfaceStyle -string "Dark"
 
 # Set sidebar icon size to small
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
@@ -31,16 +32,13 @@ defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 ###############################################################################
 
 # Change screensaver to random
-# TODO
+defaults -currentHost write com.apple.screensaver moduleDict -dict moduleName Random path /System/Library/Screen\ Savers/Random.saver type 8
 
 # Start screensaver after 10 minutes
-# TODO
+defaults -currentHost write com.apple.screensaver idleTime 600
 
 # Show screensaver with Clock
-# TODO
-
-# Set custom wallpaper ¡Carefull custom command!
-# TODO
+defaults -currentHost write com.apple.screensaver showClock -bool true
 
 ###############################################################################
 # Dock                                                                        #
@@ -65,10 +63,10 @@ defaults write com.apple.dock orientation -string left
 defaults write com.apple.dock magnification -boolean NO
 
 # Double-click a window's title bar to minimize
-# TODO
+defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleActionOnDoubleClick -string "Minimize"
 
 # Prefer tabs when opening documents always
-# TODO
+defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleWindowTabbingMode -string "always"
 
 ###############################################################################
 # Mission Control                                                             #
@@ -134,11 +132,17 @@ defaults write com.apple.airplay showInMenuBarIfPresent -bool false
 # Show Battery Percentage on the meny bar
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
+# Battery - Computer sleep: 20 min
+sudo pmset -b sleep 20
+
 # Battery - Turn display off after: 5 min
-# TODO
+sudo pmset -b displaysleep 5
+
+# Power Adapter - Computer sleep: 30 min
+sudo pmset -c sleep 30
 
 # Power Adapter - Turn display off after: 12 min
-# TODO
+sudo pmset -c displaysleep 12
 
 ###############################################################################
 # Keyboard                       	                                            #
@@ -148,12 +152,10 @@ defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Don't adjust keyboard brightness on low light
-# defaults write com.apple.BezelServices kDim -bool true
-# TODO check
+defaults write com.apple.BezelServices kDim -bool true
 
 # Turn keyboard backlight off after 30 secs of inactivity
-# defaults write com.apple.BezelServices kDimTime -int 30
-# TODO check
+defaults write com.apple.BezelServices kDimTime -int 30
 
 # Disable auto-correct spelling automatically
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
@@ -169,12 +171,13 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # Trackpad                       	                                            #
 ###############################################################################
 
-# Trackpad: enable tap to click for this user and for the login screen
+# enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
 defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 
-# Activate App Exposé gesture
+# activate App Exposé gesture
 defaults write com.apple.dock showAppExposeGestureEnabled -bool true
 
 ###############################################################################
@@ -230,12 +233,6 @@ defaults write com.apple.appstore ShowDebugMenu -bool true
 # TODO
 
 ###############################################################################
-# Extensions                    	                                            #
-###############################################################################
-
-# TODO any extension worth installing?
-
-###############################################################################
 # Users & Groups                	                                            #
 ###############################################################################
 
@@ -257,9 +254,6 @@ defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server All
 # Date & Time                   	                                            #
 ###############################################################################
 
-# Set date and time automatically
-# TODO
-
 # Show date on the menu bar
 defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM  HH:mm"
 
@@ -270,15 +264,17 @@ defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM  HH:mm"
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-# Don't show Time Machine in menu bar
-# TODO
-
 ###############################################################################
 # Accesibility                  	                                            #
 ###############################################################################
 
 # Enable trackpad dragging without lock
 # TODO
+# enable "tap-and-a-half" to drag.
+# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -int 1
+# defaults write com.apple.AppleMultitouchTrackpad Dragging -int 1
+# defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 2
+# defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 2
 
 ###############################################################################
 # Extras                        	                                            #
@@ -291,8 +287,9 @@ chflags nohidden ~/Library
 chflags nohidden /Volumes
 
 # Create Developer folder in home directory
-# TODO check if exists
-# mkdir ~/Developer
+if [ ! -d ~/Developer ]; then
+	mkdir ~/Developer
+fi;
 
 ###############################################################################
 # Desktop                        	                                            #
@@ -331,7 +328,8 @@ defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
 # TODO
 
 # Don't show "All my files" and "Recent tags" on the sidebar
-# TODO
+# TODO "all my files"
+defaults write com.apple.finder ShowRecentTags -bool false
 
 # Show "User" and "User Macbook Pro" on the sidebar
 # TODO
@@ -353,6 +351,8 @@ defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 # Safari                         	                                            #
 ###############################################################################
 
+# show the status bar at the bottom (see URL on hover)
+defaults write com.apple.Safari 'ShowStatusBar' -bool true
 
 ###############################################################################
 # Calendar                      	                                            #
@@ -373,3 +373,24 @@ defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 # Sort by first name
 # TODO
+
+###############################################################################
+# Terminal                       	                                            #
+###############################################################################
+
+# add to the dock
+dockutil --add '/Applications/Utilities/Terminal.app' --replacing 'Terminal'
+
+# TODO
+
+###############################################################################
+# Kill affected applications                                                  #
+###############################################################################
+
+for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
+	"Dock" "Finder" "Google Chrome" "Google Chrome Canary" "Mail" "Messages" \
+	"Opera" "Photos" "Safari" "SizeUp" "Spectacle" "SystemUIServer" "Terminal" \
+	"Transmission" "Tweetbot" "Twitter" "iCal"; do
+	killall "${app}" &> /dev/null
+done
+echo "Done. Note that some of these changes require a logout/restart to take effect."
