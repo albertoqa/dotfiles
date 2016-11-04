@@ -105,10 +105,16 @@ defaults write com.apple.dock wvous-tl-modifier -int 0
 # Language & Region                                                           #
 ###############################################################################
 
-# I'm a spanish speaker but using English language for the mac. I just want to
-# add the Spanish language as a secondary language to the system. This is a
-# little remmember.
-echo "Remmember to add Spanish language to the list."
+# System language set to English, region set to ES
+defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleLocale -string "en_ES"
+
+# Add spanish to the list of system languages
+defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleLanguages -dict "en-ES" "es-ES"
+
+# Select default metrics
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleMetricUnits -bool true
+defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
 
 ###############################################################################
 # Security & Privacy                                                          #
