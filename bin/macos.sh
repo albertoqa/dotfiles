@@ -40,6 +40,12 @@ defaults -currentHost write com.apple.screensaver idleTime 600
 # Show screensaver with Clock
 defaults -currentHost write com.apple.screensaver showClock -bool true
 
+# Set a custom wallpaper image. `DefaultDesktop.jpg` is already a symlink, and
+# all wallpapers are in `/Library/Desktop Pictures/`. The default is `Wave.jpg`.
+#rm -rf ~/Library/Application Support/Dock/desktoppicture.db
+#sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
+#sudo ln -s /path/to/your/image /System/Library/CoreServices/DefaultDesktop.jpg
+
 ###############################################################################
 # Dock                                                                        #
 ###############################################################################
@@ -122,8 +128,29 @@ defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 # Spotlight                                                                   #
 ###############################################################################
 
-# Don't search for fonts
-# TODO
+# Change default spotlight categories
+defaults write com.apple.spotlight orderedItems -array \
+	'{"enabled" = 1;"name" = "APPLICATIONS";}' \
+	'{"enabled" = 1;"name" = "MENU_SPOTLIGHT_SUGGESTIONS";}' \
+	'{"enabled" = 1;"name" = "MENU_CONVERSION";}' \
+	'{"enabled" = 1;"name" = "MENU_EXPRESSION";}' \
+	'{"enabled" = 1;"name" = "MENU_DEFINITION";}' \
+	'{"enabled" = 1;"name" = "SYSTEM_PREFS";}' \
+	'{"enabled" = 1;"name" = "DOCUMENTS";}' \
+	'{"enabled" = 1;"name" = "DIRECTORIES";}' \
+	'{"enabled" = 1;"name" = "PRESENTATIONS";}' \
+	'{"enabled" = 1;"name" = "SPREADSHEETS";}' \
+	'{"enabled" = 1;"name" = "PDF";}' \
+	'{"enabled" = 1;"name" = "MESSAGES";}' \
+	'{"enabled" = 1;"name" = "CONTACT";}' \
+	'{"enabled" = 1;"name" = "EVENT_TODO";}' \
+	'{"enabled" = 1;"name" = "IMAGES";}' \
+	'{"enabled" = 1;"name" = "BOOKMARKS";}' \
+	'{"enabled" = 1;"name" = "MUSIC";}' \
+	'{"enabled" = 1;"name" = "MOVIES";}' \
+	'{"enabled" = 0;"name" = "FONTS";}' \
+	'{"enabled" = 1;"name" = "MENU_OTHER";}' \
+	'{"enabled" = 1;"name" = "SOURCE";}'
 
 ###############################################################################
 # Displays                      	                                            #
@@ -353,6 +380,9 @@ defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
 # Disable inline attachments (just show the icons)
 # defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
+# TODO add signature to gmail
+# TODO select gmail as primary address
+
 ###############################################################################
 # Safari                         	                                            #
 ###############################################################################
@@ -459,3 +489,6 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 ###############################################################################
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
+
+# Restart computer now!
+shutdown -r now
