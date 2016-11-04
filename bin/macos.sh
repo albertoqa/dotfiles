@@ -269,12 +269,8 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 ###############################################################################
 
 # Enable trackpad dragging without lock
-# TODO
-# enable "tap-and-a-half" to drag.
-# defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -int 1
-# defaults write com.apple.AppleMultitouchTrackpad Dragging -int 1
-# defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 2
-# defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -int 1
+defaults write com.apple.AppleMultitouchTrackpad Dragging -int 1
 
 ###############################################################################
 # Extras                        	                                            #
@@ -309,7 +305,7 @@ fi;
 ###############################################################################
 
 # Set User home as the default location for new Finder windows
-defaults write com.apple.finder NewWindowTarget -string "PfDe"
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
 defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
 # Show all filename extensions
@@ -371,8 +367,14 @@ defaults write com.apple.Safari 'ShowStatusBar' -bool true
 # Contacts                       	                                            #
 ###############################################################################
 
+# Address format
+defaults write com.apple.AddressBook ABDefaultAddressCountryCode -string "es"
+
+# Display format "First, Last"
+defaults write com.apple.AddressBook NSPersonNameDefaultDisplayNameOrder -int 1
+
 # Sort by first name
-# TODO
+defaults write com.apple.AddressBook ABNameSortingFormat -string "sortingFirstName sortingLastName"
 
 ###############################################################################
 # Terminal                       	                                            #
