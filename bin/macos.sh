@@ -68,6 +68,16 @@ defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleActionOnDoubl
 # Prefer tabs when opening documents always
 defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleWindowTabbingMode -string "always"
 
+# remove all icons from the dock
+defaults write com.apple.dock persistent-apps -array
+
+# add my preferred icons to the dock
+dockutil --add '/Applications/Safari.app' --replacing 'Safari'
+dockutil --add '/Applications/Mail.app' --replacing 'Mail'
+dockutil --add '/Applications/Calendar.app' --replacing 'Calendar'
+dockutil --add '/Applications/Notes.app' --replacing 'Notes'
+dockutil --add '/Applications/Utilities/Terminal.app' --replacing 'Terminal'
+
 ###############################################################################
 # Mission Control                                                             #
 ###############################################################################
@@ -199,18 +209,7 @@ defaults write com.apple.systemuiserver menuExtras -array \
 	"/System/Library/CoreServices/Menu Extras/Battery.menu" \
 	"/System/Library/CoreServices/Menu Extras/Clock.menu"
 
-###############################################################################
-# iCloud                         	                                            #
-###############################################################################
-
-# TODO
-
-###############################################################################
-# Internet Accounts              	                                            #
-###############################################################################
-
-# TODO check if is possible to automaically add my internet accounts in a
-# separate file so it is private
+defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -bool true
 
 ###############################################################################
 # App Store                      	                                            #
@@ -342,6 +341,17 @@ defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 # Mail                          	                                            #
 ###############################################################################
 
+# Enable junk mail filtering
+# TODO
+
+# Show To/Cc label in the message list
+# TODO
+
+# Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
+defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
+
+# Disable inline attachments (just show the icons)
+# defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
 ###############################################################################
 # Safari                         	                                            #
@@ -349,6 +359,60 @@ defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 # show the status bar at the bottom (see URL on hover)
 defaults write com.apple.Safari 'ShowStatusBar' -bool true
+
+# Privacy: don’t send search queries to Apple
+defaults write com.apple.Safari UniversalSearchEnabled -bool false
+defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
+# Press Tab to highlight each item on a web page
+defaults write com.apple.Safari WebKitTabToLinksPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2TabsToLinks -bool true
+
+# Show the full URL in the address bar (note: this still hides the scheme)
+defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
+
+# Set Safari’s home page to google.com
+defaults write com.apple.Safari HomePage -string "https://www.google.com"
+
+# Prevent Safari from opening ‘safe’ files automatically after downloading
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+
+# Show Safari’s bookmarks bar by default
+defaults write com.apple.Safari ShowFavoritesBar -bool true
+
+# Enable Safari’s debug menu
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
+
+# Make Safari’s search banners default to Contains instead of Starts With
+defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+
+# Enable the Develop menu and the Web Inspector in Safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+
+# Add a context menu item for showing the Web Inspector in web views
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+
+# Enable “Do Not Track”
+defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
+
+# Update extensions automatically
+defaults write com.apple.Safari InstallExtensionUpdatesAutomatically -bool true
+
+# Warn about fraudulent websites
+defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
+
+# Open new tabs with an empty page
+defaults write com.apple.Safari NewTabBehavior -int 1
+
+# don't show favorites on the smart search bar
+defaults write com.apple.Safari ShowFavoritesUnderSmartSearchField -bool false
+
+# don't allow websites to ask for permission to send push notifications
+defaults write com.apple.Safari CanPromptForPushNotifications -bool false
+
+# TODO install extensions: "Save to Pocket", "AdBlock", "SessionRestore"
 
 ###############################################################################
 # Calendar                      	                                            #
@@ -380,19 +444,18 @@ defaults write com.apple.AddressBook ABNameSortingFormat -string "sortingFirstNa
 # Terminal                       	                                            #
 ###############################################################################
 
-# add to the dock
-dockutil --add '/Applications/Utilities/Terminal.app' --replacing 'Terminal'
-
 # TODO
 
 ###############################################################################
-# Kill affected applications                                                  #
+# Activity Monitor                                                            #
 ###############################################################################
 
-for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
-	"Dock" "Finder" "Google Chrome" "Google Chrome Canary" "Mail" "Messages" \
-	"Opera" "Photos" "Safari" "SizeUp" "Spectacle" "SystemUIServer" "Terminal" \
-	"Transmission" "Tweetbot" "Twitter" "iCal"; do
-	killall "${app}" &> /dev/null
-done
+# Visualize CPU usage in the Activity Monitor Dock icon
+defaults write com.apple.ActivityMonitor IconType -int 5
+
+# Show all processes in Activity Monitor
+defaults write com.apple.ActivityMonitor ShowCategory -int 0
+
+###############################################################################
+
 echo "Done. Note that some of these changes require a logout/restart to take effect."
