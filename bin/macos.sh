@@ -20,6 +20,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # General                                                                     #
 ###############################################################################
 
+echo "Configuring general preferences"
+
 # Use dark menu bar and dock
 defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleInterfaceTheme -string "Dark"
 defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleInterfaceStyle -string "Dark"
@@ -30,6 +32,8 @@ defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 ###############################################################################
 # Desktop & Screen Saver                                                      #
 ###############################################################################
+
+echo "Configuring desktop and screen saver preferences"
 
 # Change screensaver to random
 defaults -currentHost write com.apple.screensaver moduleDict -dict moduleName Random path /System/Library/Screen\ Savers/Random.saver type 8
@@ -49,6 +53,8 @@ defaults -currentHost write com.apple.screensaver showClock -bool true
 ###############################################################################
 # Dock                                                                        #
 ###############################################################################
+
+echo "Configuring dock preferences"
 
 # Set the icon size of Dock items to 34 pixels
 defaults write com.apple.dock tilesize -int 34
@@ -78,15 +84,17 @@ defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleWindowTabbing
 defaults write com.apple.dock persistent-apps -array
 
 # add my preferred icons to the dock
-dockutil --add '/Applications/Safari.app' --replacing 'Safari'
-dockutil --add '/Applications/Mail.app' --replacing 'Mail'
-dockutil --add '/Applications/Calendar.app' --replacing 'Calendar'
-dockutil --add '/Applications/Notes.app' --replacing 'Notes'
-dockutil --add '/Applications/Utilities/Terminal.app' --replacing 'Terminal'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Safari.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Mail.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Calendar.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Notes.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Utilities/Terminal.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
 
 ###############################################################################
 # Mission Control                                                             #
 ###############################################################################
+
+echo "Configuring mission control preferences"
 
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
@@ -105,11 +113,13 @@ defaults write com.apple.dock wvous-tl-modifier -int 0
 # Language & Region                                                           #
 ###############################################################################
 
+echo "Configuring language and region preferences"
+
 # System language set to English, region set to ES
 defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleLocale -string "en_ES"
 
-# Add spanish to the list of system languages
-defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleLanguages -dict "en-ES" "es-ES"
+# Add spanish to the list of system languages. THIS BREAKS FINDER!!!!! FIXFIXFIXFIXFIX TODO
+# defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleLanguages -dict "en-ES" "es-ES"
 
 # Select default metrics
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
@@ -120,12 +130,14 @@ defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
 # Security & Privacy                                                          #
 ###############################################################################
 
+echo "Configuring security and privacy preferences"
+
 # Require password immediately after sleep or screen saver begins
 defaults write com.apple.screensaver askForPassword -int 1
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Turn on firewall
-defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 
 # Allow apps downloaded from App Store and identified developers
 # TODO
@@ -133,6 +145,8 @@ defaults write /Library/Preferences/com.apple.alf globalstate -int 1
 ###############################################################################
 # Spotlight                                                                   #
 ###############################################################################
+
+echo "Configuring spotlight preferences"
 
 # Change default spotlight categories
 defaults write com.apple.spotlight orderedItems -array \
@@ -162,6 +176,8 @@ defaults write com.apple.spotlight orderedItems -array \
 # Displays                      	                                            #
 ###############################################################################
 
+echo "Configuring displays preferences"
+
 # Don't show mirroring options in menu bar
 defaults write com.apple.airplay showInMenuBarIfPresent -bool false
 
@@ -170,6 +186,8 @@ defaults write com.apple.airplay showInMenuBarIfPresent -bool false
 ###############################################################################
 # Energy Saver                  	                                            #
 ###############################################################################
+
+echo "Configuring energy saver preferences"
 
 # Show Battery Percentage on the meny bar
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
@@ -190,11 +208,13 @@ sudo pmset -c displaysleep 12
 # Keyboard                       	                                            #
 ###############################################################################
 
+echo "Configuring keyboard preferences"
+
 # Enable full keyboard access for all controls
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Don't adjust keyboard brightness on low light
-defaults write com.apple.BezelServices kDim -bool true
+# defaults write com.apple.BezelServices kDim -bool true
 
 # Turn keyboard backlight off after 30 secs of inactivity
 defaults write com.apple.BezelServices kDimTime -int 30
@@ -213,6 +233,8 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 # Trackpad                       	                                            #
 ###############################################################################
 
+echo "Configuring trackpad preferences"
+
 # enable tap to click for this user and for the login screen
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
@@ -226,6 +248,8 @@ defaults write com.apple.dock showAppExposeGestureEnabled -bool true
 # Printers                       	                                            #
 ###############################################################################
 
+echo "Configuring printers preferences"
+
 # Expand print panel by default
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
@@ -233,6 +257,8 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 ###############################################################################
 # Sound                         	                                            #
 ###############################################################################
+
+echo "Configuring sound preferences"
 
 # Show volume in menu bar
 defaults write com.apple.systemuiserver menuExtras -array \
@@ -247,6 +273,8 @@ defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextr
 # App Store                      	                                            #
 ###############################################################################
 
+echo "Configuring App Store preferences"
+
 # Save password for free downloads
 # TODO
 
@@ -260,6 +288,8 @@ defaults write com.apple.appstore ShowDebugMenu -bool true
 # Bluethooth                     	                                            #
 ###############################################################################
 
+echo "Configuring Bluetooth preferences"
+
 # Turn bluethooth off
 # TODO
 
@@ -267,16 +297,25 @@ defaults write com.apple.appstore ShowDebugMenu -bool true
 # Users & Groups                	                                            #
 ###############################################################################
 
-# Don't allow guests to log in to this computer
-defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool NO
-defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool NO
+echo "Configuring users and groups preferences"
 
-# Change user photo 😎
-# TODO
+# Don't allow guests to log in to this computer
+sudo defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool NO
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool NO
+
+# Change my user avatar
+# Be carefull this is hardcoded!
+# TODO dont hardcode this!
+# dscl . -delete /Users/alberto JPEGPhoto
+# dscl . -delete /Users/alberto Picture
+# dscl . -create /Users/alberto Picture '/Users/alberto/Developer/dotfiles/misc/avatar.jpg'
+# xxd -p ./dotfiles/misc/avatar.jpg | xargs sudo dscl . -create /Users/alberto JPEGPhoto $1
 
 ###############################################################################
 # Siri                           	                                            #
 ###############################################################################
+
+echo "Configuring Siri preferences"
 
 # Disable Siri
 # TODO
@@ -285,6 +324,8 @@ defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server All
 # Date & Time                   	                                            #
 ###############################################################################
 
+echo "Configuring date and time preferences"
+
 # Show date on the menu bar
 defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM  HH:mm"
 
@@ -292,12 +333,16 @@ defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM  HH:mm"
 # Time Machine                   	                                            #
 ###############################################################################
 
+echo "Configuring time machine preferences"
+
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 ###############################################################################
 # Accesibility                  	                                            #
 ###############################################################################
+
+echo "Configuring accesibility preferences"
 
 # Enable trackpad dragging without lock
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -int 1
@@ -307,11 +352,13 @@ defaults write com.apple.AppleMultitouchTrackpad Dragging -int 1
 # Extras                        	                                            #
 ###############################################################################
 
+echo "Configuring extra preferences"
+
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
 # Show the /Volumes folder
-chflags nohidden /Volumes
+sudo chflags nohidden /Volumes
 
 # Create Developer folder in home directory
 if [ ! -d ~/Developer ]; then
@@ -322,6 +369,8 @@ fi;
 # Desktop                        	                                            #
 ###############################################################################
 
+echo "Configuring desktop view options"
+
 # Show item info to the right of the icons on the desktop
 /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist
 
@@ -331,9 +380,14 @@ fi;
 # Set grid spacing for desktop icons to 50
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 50" ~/Library/Preferences/com.apple.finder.plist
 
+# Set text size to 10pt
+/usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:textSize 10" ~/Library/Preferences/com.apple.finder.plist
+
 ###############################################################################
 # Finder                         	                                            #
 ###############################################################################
+
+echo "Configuring finder options"
 
 # Set User home as the default location for new Finder windows
 defaults write com.apple.finder NewWindowTarget -string "PfHm"
@@ -373,6 +427,8 @@ defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 # Mail                          	                                            #
 ###############################################################################
 
+echo "Configuring mail options"
+
 # Enable junk mail filtering
 # TODO
 
@@ -383,7 +439,7 @@ defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
 
 # Disable inline attachments (just show the icons)
-# defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
+defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
 # TODO add signature to gmail
 # TODO select gmail as primary address
@@ -391,6 +447,8 @@ defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
 ###############################################################################
 # Safari                         	                                            #
 ###############################################################################
+
+echo "Configuring safari options"
 
 # show the status bar at the bottom (see URL on hover)
 defaults write com.apple.Safari 'ShowStatusBar' -bool true
@@ -447,11 +505,16 @@ defaults write com.apple.Safari ShowFavoritesUnderSmartSearchField -bool false
 # don't allow websites to ask for permission to send push notifications
 defaults write com.apple.Safari CanPromptForPushNotifications -bool false
 
+# include search engine suggestions
+defaults write com.apple.Safari SuppressSearchSuggestions -bool false
+
 # TODO install extensions: "Save to Pocket", "AdBlock", "SessionRestore"
 
 ###############################################################################
 # Calendar                      	                                            #
 ###############################################################################
+
+echo "Configuring calendar options"
 
 # Don't show birthdays Calendar
 defaults write com.apple.iCal "display birthdays calendar" -bool false
@@ -466,6 +529,8 @@ defaults write com.apple.iCal "CalUICanvasOccurrenceFontSize" -int 10
 # Contacts                       	                                            #
 ###############################################################################
 
+echo "Configuring contacts options"
+
 # Address format
 defaults write com.apple.AddressBook ABDefaultAddressCountryCode -string "es"
 
@@ -479,40 +544,54 @@ defaults write com.apple.AddressBook ABNameSortingFormat -string "sortingFirstNa
 # Terminal                       	                                            #
 ###############################################################################
 
+echo "Configuring terminal options"
+
 # default theme to Basic
 defaults write com.apple.Terminal "Default Window Settings" -string "Basic"
 defaults write com.apple.Terminal "Startup Window Settings" -string "Basic"
 
 # configure the basic theme
 /usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:FontAntialias 1" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:rowCount 30" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:UseBoldFonts 1" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowActiveProcessArgumentsInTitle 1" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:rowCount integer 30" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:UseBoldFonts bool 1" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:ShowActiveProcessArgumentsInTitle bool 1" ~/Library/Preferences/com.apple.Terminal.plist
 
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowRepresentedURLPathInTitle 0" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowTTYNameInTitle 0" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:BackgroundSettingsForInactiveWindows 0" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:UseBrightBold 0" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowWindowSettingsNameInTitle 0" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:FontWidthSpacing 1,00403225806452" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:ShowRepresentedURLPathInTitle bool 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:ShowTTYNameInTitle bool 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:BackgroundSettingsForInactiveWindows bool 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:UseBrightBold bool 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:ShowWindowSettingsNameInTitle bool 0" ~/Library/Preferences/com.apple.Terminal.plist
 
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowCommandKeyInTitle 0" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:BackgroundBlur 0,296188586795261" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:CursorType 0" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:columnCount 90" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowDimensionsInTitle 0" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:CursorBlink 0" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowActiveProcessInTitle 1" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:ShowCommandKeyInTitle bool 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:BackgroundBlur real 0,296188586795261" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:CursorType bool 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:columnCount integer 90" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:ShowDimensionsInTitle bool 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:CursorBlink bool 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:ShowActiveProcessInTitle bool 1" ~/Library/Preferences/com.apple.Terminal.plist
 
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowShellCommandInTitle 0" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:ShowRepresentedURLInTitle 1" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:ShowShellCommandInTitle bool 0" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:ShowRepresentedURLInTitle bool 1" ~/Library/Preferences/com.apple.Terminal.plist
 
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:BackgroundColor \"<62706c69 73743030 d4010203 04050615 16582476 65727369 6f6e5824 6f626a65 63747359 24617263 68697665 72542474 6f701200 0186a0a3 07080f55 246e756c 6cd3090a 0b0c0d0e 554e5352 47425c4e 53436f6c 6f725370 61636556 24636c61 73734631 20312031 00100180 02d21011 12135a24 636c6173 736e616d 65582463 6c617373 6573574e 53436f6c 6f72a212 14584e53 4f626a65 63745f10 0f4e534b 65796564 41726368 69766572 d1171854 726f6f74 80010811 1a232d32 373b4148 4e5b6269 6b6d727d 868e919a acafb400 00000000 00010100 00000000 00001900 00000000 00000000 00000000 0000b6>\"" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:Font \"<62706c69 73743030 d4010203 04050618 19582476 65727369 6f6e5824 6f626a65 63747359 24617263 68697665 72542474 6f701200 0186a0a4 07081112 55246e75 6c6cd409 0a0b0c0d 0e0f1056 4e535369 7a65584e 5366466c 61677356 4e534e61 6d655624 636c6173 73234026 00000000 00001010 80028003 5e53464d 6f6e6f2d 52656775 6c6172d2 13141516 5a24636c 6173736e 616d6558 24636c61 73736573 564e5346 6f6e74a2 1517584e 534f626a 6563745f 100f4e53 4b657965 64417263 68697665 72d11a1b 54726f6f 74800108 111a232d 32373c42 4b525b62 69727476 78878c97 a0a7aab3 c5c8cd00 00000000 00010100 00000000 00001c00 00000000 00000000 00000000 0000cf>\"" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Add \"Window Settings\":Basic:BackgroundColor data \"<62706c69 73743030 d4010203 04050615 16582476 65727369 6f6e5824 6f626a65 63747359 24617263 68697665 72542474 6f701200 0186a0a3 07080f55 246e756c 6cd3090a 0b0c0d0e 554e5352 47425c4e 53436f6c 6f725370 61636556 24636c61 73734631 20312031 00100180 02d21011 12135a24 636c6173 736e616d 65582463 6c617373 6573574e 53436f6c 6f72a212 14584e53 4f626a65 63745f10 0f4e534b 65796564 41726368 69766572 d1171854 726f6f74 80010811 1a232d32 373b4148 4e5b6269 6b6d727d 868e919a acafb400 00000000 00010100 00000000 00001900 00000000 00000000 00000000 0000b6>\"" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set \"Window Settings\":Basic:Font data \"<62706c69 73743030 d4010203 04050618 19582476 65727369 6f6e5824 6f626a65 63747359 24617263 68697665 72542474 6f701200 0186a0a4 07081112 55246e75 6c6cd409 0a0b0c0d 0e0f1056 4e535369 7a65584e 5366466c 61677356 4e534e61 6d655624 636c6173 73234026 00000000 00001010 80028003 5e53464d 6f6e6f2d 52656775 6c6172d2 13141516 5a24636c 6173736e 616d6558 24636c61 73736573 564e5346 6f6e74a2 1517584e 534f626a 6563745f 100f4e53 4b657965 64417263 68697665 72d11a1b 54726f6f 74800108 111a232d 32373c42 4b525b62 69727476 78878c97 a0a7aab3 c5c8cd00 00000000 00010100 00000000 00001c00 00000000 00000000 00000000 0000cf>\"" ~/Library/Preferences/com.apple.Terminal.plist
+
+###############################################################################
+# Text Edit                                                                   #
+###############################################################################
+
+echo "Configuring text edit options"
+
+# Plain text by default
+defaults write com.apple.TextEdit RichText -int 0
+
+# TODO text edit comillas feas!
 
 ###############################################################################
 # Activity Monitor                                                            #
 ###############################################################################
+
+echo "Configuring activity monitor options"
 
 # Visualize CPU usage in the Activity Monitor Dock icon
 defaults write com.apple.ActivityMonitor IconType -int 5
@@ -525,4 +604,4 @@ defaults write com.apple.ActivityMonitor ShowCategory -int 0
 echo "Done. Note that some of these changes require a logout/restart to take effect."
 
 # Restart computer now!
-shutdown -r now
+# sudo shutdown -r now
