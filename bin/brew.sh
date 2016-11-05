@@ -84,5 +84,56 @@ brew cask install betterzipql       # preview archives
 # Enable text selection in QuickLook views. TODO check
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE
 
+###############################################################################
+# Apps                                                                        #
+###############################################################################
+
+# Install all our favourite apps without even a single click 😮
+
+# Social
+brew cask install adium
+brew cask install skype
+brew cask install slack
+brew cask install whatsapp
+
+# Office
+brew cask install macdown
+
+# Utilities
+brew cask install flux
+brew cask install the-unarchiver
+
+# General
+brew cask install google-drive
+brew cask install google-chrome
+brew cask install firefox
+brew cask install spotify
+brew cask install vlc
+brew cask install transmission
+
+# Java
+sudo brew cask install java
+brew install scala
+brew install maven
+brew install sonar
+brew install sonar-scanner
+
+# Development
+brew cask install atom
+brew cask install postman
+brew cask install github-desktop
+brew cask install intellij-idea
+brew cask install pycharm
+brew cask install android-studio
+brew cask install textwrangler
+brew cask install netbeans-java-ee
+brew cask install mysqlworkbench
+
+# Graphics
+brew cask install icons8
+brew cask install image2icon
+brew cask install imagealpha
+brew cask install imageoptim
+
 # Cleanup
 brew cleanup
