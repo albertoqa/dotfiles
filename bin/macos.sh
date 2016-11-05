@@ -299,6 +299,7 @@ echo "Configuring users and groups preferences"
 # Don't allow guests to log in to this computer
 sudo defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool NO
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool NO
+sudo defaults write /Library/Preferences/com.apple.loginwindow.plist GuestEnabled -bool NO
 
 ###############################################################################
 # Date & Time                   	                                          #
