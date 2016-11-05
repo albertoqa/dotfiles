@@ -6,8 +6,9 @@
 # IMPORTANT:
 # Before run this script you need to install Xcode.
 
-# agree to xcode license
+# agree to xcode license and install command line tools
 sudo xcodebuild -license
+sudo xcode-select --install
 
 # Install brew (if not already installed)
 if ! command -v brew >/dev/null 2>&1; then
@@ -34,9 +35,11 @@ brew upgrade
 # Both are compatibles and this way you can test the code in both
 brew install python python3
 
-pip install virtualenv            # install virtualenv
+# update pip and setuptools
+pip install --upgrade pip setuptools
+pip3 install --upgrade pip setuptools wheel
 
-brew install scala                # install scala language
+pip install virtualenv            # install virtualenv
 
 brew install ack                  # search for things within a repo
 brew install the_silver_searcher  # alternative to ack maybe faster
@@ -52,13 +55,9 @@ brew install iftop                # show network usage (similar to top)
 brew install unrar                # decompress rar files
 brew install dockutil             # manage dock items from the terminal
 
-brew install maven
 brew install node
 brew install mongodb
 brew install mysql
-
-brew install sonar
-brew install sonar-runner
 
 ###############################################################################
 # Cask                                                                        #
@@ -84,60 +83,6 @@ brew cask install betterzipql       # preview archives
 
 # Enable text selection in QuickLook views. TODO check
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE
-
-###############################################################################
-# Apps                                                                        #
-###############################################################################
-
-# Install all our favourite apps without even a single click 😮
-
-# Social
-brew cask install adium
-brew cask install skype
-brew cask install slack
-brew cask install whatsapp
-
-# Office
-brew cask install macdown
-# TODO missing pages, numbers, keynote
-# TODO missing Pocket
-
-# Utilities
-brew cask install flux
-brew cask install the-unarchiver
-# TODO missing Magnet
-# TODO missing CopyClip
-# TODO missing Memory Clean
-# TODO missing Commander One Pro
-
-# General
-brew cask install google-drive
-brew cask install google-chrome
-brew cask install firefox
-brew cask install spotify
-brew cask install vlc
-brew cask install transmission
-
-# Development
-brew cask install java
-brew cask install atom
-brew cask install postman
-brew cask install github-desktop
-brew cask install intellij-idea
-brew cask install pycharm
-brew cask install android-studio
-brew cask install textwrangler
-brew cask install netbeans-java-ee
-brew cask install mysqlworkbench
-# TODO missing scenebuilder
-
-# Graphics
-brew install icons8
-brew install image2icon
-brew install imagealpha
-brew install imageoptim
-# TODO missing Color Picker
-# TODO missing Promotee
 
 # Cleanup
 brew cleanup
