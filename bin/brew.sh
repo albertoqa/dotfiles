@@ -81,7 +81,7 @@ brew cask install quicklook-csv     # preview CSV files
 brew cask install qlprettypatch     # preview diffs
 brew cask install betterzipql       # preview archives
 
-# Enable text selection in QuickLook views. TODO check
+# Enable text selection in QuickLook views.
 defaults write com.apple.finder QLEnableTextSelection -bool TRUE
 
 ###############################################################################
@@ -157,9 +157,6 @@ mas install 641027709	# install Color Picker
 ###############################################################################
 # Other                                                                       #
 ###############################################################################
-
-# TODO missing scenebuilder
-# TODO missing Promotee
 
 # add spotify and atom icons to the dock
 defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Atom.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
