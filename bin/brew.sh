@@ -135,5 +135,24 @@ brew cask install image2icon
 brew cask install imagealpha
 brew cask install imageoptim
 
+###############################################################################
+# Mac App Store Apps                                                          #
+###############################################################################
+
+# Command line interface for the Mac App Store
+# This command will not allow you to install an app for the first time: it must
+# already be in the Purchased tab of the App Store.
+brew install mas
+
+mas install 441258766	# install Magnet
+mas install 595191960	# install CopyClip
+mas install 1114591412	# install Memory Clean 2
+mas install 1035237815	# install Commander One Pro
+mas install 409201541	# install Pages
+mas install 409203825	# install Numbers
+mas install 409183694	# install Keynote
+mas install 568494494	# install Pocket
+mas install 641027709	# install Color Picker
+
 # Cleanup
 brew cleanup
