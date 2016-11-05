@@ -17,6 +17,13 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ###############################################################################
+# Updates                                                                     #
+###############################################################################
+
+# search for system updates and install them
+sudo softwareupdate —i -a
+
+###############################################################################
 # General                                                                     #
 ###############################################################################
 
@@ -46,9 +53,9 @@ defaults -currentHost write com.apple.screensaver showClock -bool true
 
 # Set a custom wallpaper image. `DefaultDesktop.jpg` is already a symlink, and
 # all wallpapers are in `/Library/Desktop Pictures/`. The default is `Wave.jpg`.
-#rm -rf ~/Library/Application Support/Dock/desktoppicture.db
-#sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
-#sudo ln -s /path/to/your/image /System/Library/CoreServices/DefaultDesktop.jpg
+# rm -rf ~/Library/Application Support/Dock/desktoppicture.db
+# sudo rm -rf /System/Library/CoreServices/DefaultDesktop.jpg
+# sudo ln -s /path/to/your/image /System/Library/CoreServices/DefaultDesktop.jpg
 
 ###############################################################################
 # Dock                                                                        #
@@ -102,7 +109,7 @@ defaults write com.apple.dock mru-spaces -bool false
 # Don’t group windows by application in Mission Control
 defaults write com.apple.dock expose-group-by-app -bool false
 
-# Disable Dashboard - disabled by default
+# Disable Dashboard → disabled by default
 # defaults write com.apple.dashboard mcx-disabled -bool true
 
 # Hot Corners... Top left screen corner → Mission Control
@@ -167,7 +174,7 @@ defaults write com.apple.spotlight orderedItems -array \
 	'{"enabled" = 1;"name" = "SOURCE";}'
 
 ###############################################################################
-# Displays                      	                                            #
+# Displays                      	                                      #
 ###############################################################################
 
 echo "Configuring displays preferences"
@@ -178,7 +185,7 @@ defaults write com.apple.airplay showInMenuBarIfPresent -bool false
 # TODO is it possible to change resolution with a command?
 
 ###############################################################################
-# Energy Saver                  	                                            #
+# Energy Saver                  	                                      #
 ###############################################################################
 
 echo "Configuring energy saver preferences"
@@ -199,7 +206,7 @@ sudo pmset -c sleep 30
 sudo pmset -c displaysleep 12
 
 ###############################################################################
-# Keyboard                       	                                            #
+# Keyboard                       	                                      #
 ###############################################################################
 
 echo "Configuring keyboard preferences"
@@ -217,14 +224,14 @@ defaults write com.apple.BezelServices kDimTime -int 30
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
 # Set a fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 3
+defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # Disable press-and-hold for keys in favor of key repeat
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 ###############################################################################
-# Trackpad                       	                                            #
+# Trackpad                       	                                      #
 ###############################################################################
 
 echo "Configuring trackpad preferences"
@@ -239,7 +246,7 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 defaults write com.apple.dock showAppExposeGestureEnabled -bool true
 
 ###############################################################################
-# Printers                       	                                            #
+# Printers                       	                                      #
 ###############################################################################
 
 echo "Configuring printers preferences"
@@ -249,7 +256,7 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
 ###############################################################################
-# Sound                         	                                            #
+# Sound                         	                                      #
 ###############################################################################
 
 echo "Configuring sound preferences"
@@ -264,7 +271,7 @@ defaults write com.apple.systemuiserver menuExtras -array \
 defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -bool true
 
 ###############################################################################
-# App Store                      	                                          #
+# App Store                      	                                      #
 ###############################################################################
 
 echo "Configuring App Store preferences"
@@ -278,11 +285,14 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 # Enable Debug Menu in the Mac App Store
 defaults write com.apple.appstore ShowDebugMenu -bool true
 
-# Auto update apps and system
-# TODO
+# Auto install app updates
+sudo defaults write /Library/Preferences/com.apple.commerce AutoUpdate -bool TRUE
+
+# Don’t install automatically macOS updates
+sudo defaults write /Library/Preferences/com.apple.commerce AutoUpdateRestartRequired -bool FALSE
 
 ###############################################################################
-# Bluethooth                     	                                          #
+# Bluethooth                     	                                      #
 ###############################################################################
 
 echo "Configuring Bluetooth preferences"
@@ -291,18 +301,19 @@ echo "Configuring Bluetooth preferences"
 # TODO
 
 ###############################################################################
-# Users & Groups                	                                          #
+# Users & Groups                	                                      #
 ###############################################################################
 
 echo "Configuring users and groups preferences"
 
 # Don't allow guests to log in to this computer
-sudo defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool NO
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool NO
-sudo defaults write /Library/Preferences/com.apple.loginwindow.plist GuestEnabled -bool NO
+# TODO
+# sudo defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool NO
+# sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool NO
+# sudo defaults write /Library/Preferences/com.apple.loginwindow.plist GuestEnabled -bool NO
 
 ###############################################################################
-# Date & Time                   	                                          #
+# Date & Time                   	                                      #
 ###############################################################################
 
 echo "Configuring date and time preferences"
@@ -311,7 +322,7 @@ echo "Configuring date and time preferences"
 defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM  HH:mm"
 
 ###############################################################################
-# Time Machine                   	                                          #
+# Time Machine                   	                                      #
 ###############################################################################
 
 echo "Configuring time machine preferences"
@@ -320,7 +331,7 @@ echo "Configuring time machine preferences"
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 ###############################################################################
-# Accesibility                  	                                          #
+# Accesibility                  	                                      #
 ###############################################################################
 
 echo "Configuring accesibility preferences"
@@ -330,7 +341,7 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -int 
 defaults write com.apple.AppleMultitouchTrackpad Dragging -int 1
 
 ###############################################################################
-# Extras                        	                                          #
+# Extras                        	                                      #
 ###############################################################################
 
 echo "Configuring extra preferences"
@@ -347,7 +358,7 @@ if [ ! -d ~/Developer ]; then
 fi;
 
 ###############################################################################
-# Desktop                        	                                          #
+# Desktop                        	                                      #
 ###############################################################################
 
 echo "Configuring desktop view options"
@@ -365,7 +376,7 @@ echo "Configuring desktop view options"
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:textSize 10" ~/Library/Preferences/com.apple.finder.plist
 
 ###############################################################################
-# Finder                         	                                          #
+# Finder                         	                                      #
 ###############################################################################
 
 echo "Configuring finder options"
@@ -405,7 +416,7 @@ defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 ###############################################################################
-# Mail                          	                                          #
+# Mail                          	                                      #
 ###############################################################################
 
 echo "Configuring mail options"
@@ -426,7 +437,7 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 # TODO select gmail as primary address
 
 ###############################################################################
-# Safari                         	                                          #
+# Safari                         	                                      #
 ###############################################################################
 
 echo "Configuring safari options"
@@ -493,7 +504,7 @@ defaults write com.apple.Safari SuppressSearchSuggestions -bool false
 # TODO install extensions: "Save to Pocket", "AdBlock", "SessionRestore"
 
 ###############################################################################
-# Calendar                      	                                          #
+# Calendar                      	                                      #
 ###############################################################################
 
 echo "Configuring calendar options"
@@ -508,7 +519,7 @@ defaults write com.apple.iCal "Show Week Numbers" -bool true
 defaults write com.apple.iCal "CalUICanvasOccurrenceFontSize" -int 10
 
 ###############################################################################
-# Contacts                       	                                          #
+# Contacts                       	                                      #
 ###############################################################################
 
 echo "Configuring contacts options"
@@ -523,7 +534,7 @@ defaults write com.apple.AddressBook NSPersonNameDefaultDisplayNameOrder -int 1
 defaults write com.apple.AddressBook ABNameSortingFormat -string "sortingFirstName sortingLastName"
 
 ###############################################################################
-# Terminal                       	                                          #
+# Terminal                       	                                      #
 ###############################################################################
 
 echo "Configuring terminal options"
