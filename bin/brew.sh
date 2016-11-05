@@ -154,5 +154,16 @@ mas install 409183694	# install Keynote
 mas install 568494494	# install Pocket
 mas install 641027709	# install Color Picker
 
+###############################################################################
+# Other                                                                       #
+###############################################################################
+
+# TODO missing scenebuilder
+# TODO missing Promotee
+
+# add spotify and atom icons to the dock
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Atom.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</key><dict><key>file-data</key><dict><key>_CFURLString</key><string>/Applications/Spotify.app</string><key>_CFURLStringType</key><integer>0</integer></dict></dict></dict>'
+
 # Cleanup
 brew cleanup
