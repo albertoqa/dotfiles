@@ -48,9 +48,28 @@ apm install atom-material-ui
 # select one dark syntax for the syntax theme
 # TODO
 
-# add an icon to the dock
-dockutil --add '/Applications/Atom.app' --replacing 'Atom'
+###############################################################################
+# Transmission                                                                #
+###############################################################################
 
-###############################################################################
-#                                                                             #
-###############################################################################
+# Trash original torrent files
+defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
+
+# Hide the donate message
+defaults write org.m0k.transmission WarningDonate -bool false
+
+# Hide the legal disclaimer
+defaults write org.m0k.transmission WarningLegal -bool false
+
+# Automatically size window to fit all trasnfers
+defaults write org.m0k.transmission AutoSize -bool true
+
+# Prompt user fro removal of active transfers only when transfers are downloading
+defaults write org.m0k.transmission CheckRemoveDownloading -bool true
+
+# Prompt user for quit with active transfers only when transfers are downloading
+defaults write org.m0k.transmission CheckQuitDownloading -bool true
+
+# Display a window when opening a torrent file only if there are multiple files
+defaults write org.m0k.transmission DownloadAskMulti -bool true
+
