@@ -472,6 +472,7 @@ defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
 # Show Safari’s bookmarks bar by default
 defaults write com.apple.Safari ShowFavoritesBar -bool true
+defaults write com.apple.Safari ShowFavoritesBar-v2 -bool true
 
 # Enable Safari’s debug menu
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
