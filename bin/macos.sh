@@ -118,9 +118,6 @@ echo "Configuring language and region preferences"
 # System language set to English, region set to ES
 defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleLocale -string "en_ES"
 
-# Add spanish to the list of system languages. THIS BREAKS FINDER!!!!! FIXFIXFIXFIXFIX TODO
-# defaults write ~/Library/Preferences/.GlobalPreferences.plist AppleLanguages -dict "en-ES" "es-ES"
-
 # Select default metrics
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricUnits -bool true
@@ -138,9 +135,6 @@ defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Turn on firewall
 sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
-
-# Allow apps downloaded from App Store and identified developers
-# TODO
 
 ###############################################################################
 # Spotlight                                                                   #
@@ -270,7 +264,7 @@ defaults write com.apple.systemuiserver menuExtras -array \
 defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -bool true
 
 ###############################################################################
-# App Store                      	                                            #
+# App Store                      	                                          #
 ###############################################################################
 
 echo "Configuring App Store preferences"
@@ -284,8 +278,11 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 # Enable Debug Menu in the Mac App Store
 defaults write com.apple.appstore ShowDebugMenu -bool true
 
+# Auto update apps and system
+# TODO
+
 ###############################################################################
-# Bluethooth                     	                                            #
+# Bluethooth                     	                                          #
 ###############################################################################
 
 echo "Configuring Bluetooth preferences"
@@ -294,7 +291,7 @@ echo "Configuring Bluetooth preferences"
 # TODO
 
 ###############################################################################
-# Users & Groups                	                                            #
+# Users & Groups                	                                          #
 ###############################################################################
 
 echo "Configuring users and groups preferences"
@@ -303,25 +300,8 @@ echo "Configuring users and groups preferences"
 sudo defaults write /Library/Preferences/com.apple.AppleFileServer guestAccess -bool NO
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server AllowGuestAccess -bool NO
 
-# Change my user avatar
-# Be carefull this is hardcoded!
-# TODO dont hardcode this!
-# dscl . -delete /Users/alberto JPEGPhoto
-# dscl . -delete /Users/alberto Picture
-# dscl . -create /Users/alberto Picture '/Users/alberto/Developer/dotfiles/misc/avatar.jpg'
-# xxd -p ./dotfiles/misc/avatar.jpg | xargs sudo dscl . -create /Users/alberto JPEGPhoto $1
-
 ###############################################################################
-# Siri                           	                                            #
-###############################################################################
-
-echo "Configuring Siri preferences"
-
-# Disable Siri
-# TODO
-
-###############################################################################
-# Date & Time                   	                                            #
+# Date & Time                   	                                          #
 ###############################################################################
 
 echo "Configuring date and time preferences"
@@ -330,7 +310,7 @@ echo "Configuring date and time preferences"
 defaults write com.apple.menuextra.clock DateFormat -string "EEE d MMM  HH:mm"
 
 ###############################################################################
-# Time Machine                   	                                            #
+# Time Machine                   	                                          #
 ###############################################################################
 
 echo "Configuring time machine preferences"
@@ -339,7 +319,7 @@ echo "Configuring time machine preferences"
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 ###############################################################################
-# Accesibility                  	                                            #
+# Accesibility                  	                                          #
 ###############################################################################
 
 echo "Configuring accesibility preferences"
@@ -349,7 +329,7 @@ defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -int 
 defaults write com.apple.AppleMultitouchTrackpad Dragging -int 1
 
 ###############################################################################
-# Extras                        	                                            #
+# Extras                        	                                          #
 ###############################################################################
 
 echo "Configuring extra preferences"
@@ -366,7 +346,7 @@ if [ ! -d ~/Developer ]; then
 fi;
 
 ###############################################################################
-# Desktop                        	                                            #
+# Desktop                        	                                          #
 ###############################################################################
 
 echo "Configuring desktop view options"
@@ -384,7 +364,7 @@ echo "Configuring desktop view options"
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:textSize 10" ~/Library/Preferences/com.apple.finder.plist
 
 ###############################################################################
-# Finder                         	                                            #
+# Finder                         	                                          #
 ###############################################################################
 
 echo "Configuring finder options"
@@ -424,7 +404,7 @@ defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 ###############################################################################
-# Mail                          	                                            #
+# Mail                          	                                          #
 ###############################################################################
 
 echo "Configuring mail options"
@@ -445,7 +425,7 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 # TODO select gmail as primary address
 
 ###############################################################################
-# Safari                         	                                            #
+# Safari                         	                                          #
 ###############################################################################
 
 echo "Configuring safari options"
@@ -512,7 +492,7 @@ defaults write com.apple.Safari SuppressSearchSuggestions -bool false
 # TODO install extensions: "Save to Pocket", "AdBlock", "SessionRestore"
 
 ###############################################################################
-# Calendar                      	                                            #
+# Calendar                      	                                          #
 ###############################################################################
 
 echo "Configuring calendar options"
@@ -527,7 +507,7 @@ defaults write com.apple.iCal "Show Week Numbers" -bool true
 defaults write com.apple.iCal "CalUICanvasOccurrenceFontSize" -int 10
 
 ###############################################################################
-# Contacts                       	                                            #
+# Contacts                       	                                          #
 ###############################################################################
 
 echo "Configuring contacts options"
@@ -542,7 +522,7 @@ defaults write com.apple.AddressBook NSPersonNameDefaultDisplayNameOrder -int 1
 defaults write com.apple.AddressBook ABNameSortingFormat -string "sortingFirstName sortingLastName"
 
 ###############################################################################
-# Terminal                       	                                            #
+# Terminal                       	                                          #
 ###############################################################################
 
 echo "Configuring terminal options"
