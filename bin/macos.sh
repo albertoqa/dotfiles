@@ -421,11 +421,11 @@ defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 echo "Configuring mail options"
 
-# Enable junk mail filtering
-# TODO
-
 # Show To/Cc label in the message list
-# TODO
+defaults write com.apple.mail EnableToCcInMessageList -bool true
+
+# Bold unread messages
+defaults write com.apple.mail ShouldShowUnreadMessagesInBold -bool true
 
 # Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
 defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
@@ -433,8 +433,12 @@ defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
 # Disable inline attachments (just show the icons)
 defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
+# Check for new messages automatically
+defaults write com.apple.mail PollTime -int -1
+
 # TODO add signature to gmail
 # TODO select gmail as primary address
+# TODO Enable junk mail filtering
 
 ###############################################################################
 # Safari                         	                                      #
