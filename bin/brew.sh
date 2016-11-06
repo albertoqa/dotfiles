@@ -121,7 +121,6 @@ brew cask install imageoptim
 # Development                                                                 #
 ###############################################################################
 
-sudo gem install cocoapods
 sudo brew cask install java
 brew install scala
 brew install maven
@@ -137,6 +136,9 @@ brew cask install android-studio
 brew cask install textwrangler
 brew cask install netbeans-java-ee
 brew cask install mysqlworkbench
+
+sudo gem install cocoapods
+sudo gem install jekyll
 
 ###############################################################################
 # Mac App Store Apps                                                          #
