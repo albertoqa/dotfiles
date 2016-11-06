@@ -64,7 +64,8 @@ brew install mysql
 ###############################################################################
 
 # Install cask so we can install apps like ninjas
-brew tap caskroom/cask
+# [ No needed anymore - Dec 2015]
+# brew tap caskroom/cask
 
 # Allow completion on brew cask
 brew install homebrew/completions/brew-cask-completion
@@ -122,10 +123,16 @@ brew cask install imageoptim
 ###############################################################################
 
 sudo brew cask install java
-brew install scala
 brew install maven
+
+brew install jenv
+# jenv add /Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home/
+# jenv global oracle64-1.8.0.112
+
 brew install sonar
 brew install sonar-scanner
+
+brew install scala
 
 brew cask install atom
 brew cask install postman
@@ -138,7 +145,10 @@ brew cask install netbeans-java-ee
 brew cask install mysqlworkbench
 
 sudo gem install cocoapods
+
 sudo gem install jekyll
+sudo gem install jekyll-sitemap
+sudo gem install jekyll-paginate
 
 ###############################################################################
 # Mac App Store Apps                                                          #
