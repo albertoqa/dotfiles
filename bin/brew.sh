@@ -111,14 +111,23 @@ brew cask install spotify
 brew cask install vlc
 brew cask install transmission
 
-# Java
+# Graphics
+brew cask install icons8
+brew cask install image2icon
+brew cask install imagealpha
+brew cask install imageoptim
+
+###############################################################################
+# Development                                                                 #
+###############################################################################
+
+sudo gem install cocoapods
 sudo brew cask install java
 brew install scala
 brew install maven
 brew install sonar
 brew install sonar-scanner
 
-# Development
 brew cask install atom
 brew cask install postman
 brew cask install github-desktop
@@ -128,12 +137,6 @@ brew cask install android-studio
 brew cask install textwrangler
 brew cask install netbeans-java-ee
 brew cask install mysqlworkbench
-
-# Graphics
-brew cask install icons8
-brew cask install image2icon
-brew cask install imagealpha
-brew cask install imageoptim
 
 ###############################################################################
 # Mac App Store Apps                                                          #
