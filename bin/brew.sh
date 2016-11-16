@@ -116,10 +116,12 @@ brew install python python3
 pip install --upgrade pip setuptools
 pip3 install --upgrade pip setuptools wheel
 
-pip3 install virtualenv            # install virtualenv
-pip3 install jupyter notebook     # jupyter notebook
+pip3 install virtualenv
+pip3 install jupyter notebook
 pip3 install numpy
 pip3 install pandas
+brew install freetype
+pip3 install matplotlib
 
 brew install node
 brew install mongodb
