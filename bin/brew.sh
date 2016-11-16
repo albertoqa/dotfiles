@@ -119,6 +119,7 @@ pip3 install --upgrade pip setuptools wheel
 pip3 install virtualenv            # install virtualenv
 pip3 install jupyter notebook     # jupyter notebook
 pip3 install numpy
+pip3 install pandas
 
 brew install node
 brew install mongodb
