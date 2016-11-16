@@ -28,18 +28,8 @@ brew update
 brew upgrade
 
 ###############################################################################
-# Tools and languages                                                         #
+# Tools                                                                       #
 ###############################################################################
-
-# Install python (macOS version is outdated) and python3
-# Both are compatibles and this way you can test the code in both
-brew install python python3
-
-# update pip and setuptools
-pip install --upgrade pip setuptools
-pip3 install --upgrade pip setuptools wheel
-
-pip install virtualenv            # install virtualenv
 
 brew install ack                  # search for things within a repo
 brew install the_silver_searcher  # alternative to ack maybe faster
@@ -54,10 +44,6 @@ brew install pv                   # show progress bar in pipelines
 brew install iftop                # show network usage (similar to top)
 brew install unrar                # decompress rar files
 brew install dockutil             # manage dock items from the terminal
-
-brew install node
-brew install mongodb
-brew install mysql
 
 ###############################################################################
 # Cask                                                                        #
@@ -121,6 +107,22 @@ brew cask install imageoptim
 ###############################################################################
 # Development                                                                 #
 ###############################################################################
+
+# Install python (macOS version is outdated) and python3
+# Both are compatibles and this way you can test the code in both
+brew install python python3
+
+# update pip and setuptools
+pip install --upgrade pip setuptools
+pip3 install --upgrade pip setuptools wheel
+
+pip3 install virtualenv            # install virtualenv
+pip3 install jupyter notebook     # jupyter notebook
+pip3 install numpy
+
+brew install node
+brew install mongodb
+brew install mysql
 
 sudo brew cask install java
 brew install maven
