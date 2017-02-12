@@ -14,7 +14,6 @@ apm install file-icons
 apm install atom-beautify
 apm install script
 apm install project-manager
-apm install docblockr
 apm install auto-update-packages
 apm install markdown-writer
 
@@ -72,4 +71,3 @@ defaults write org.m0k.transmission CheckQuitDownloading -bool true
 
 # Display a window when opening a torrent file only if there are multiple files
 defaults write org.m0k.transmission DownloadAskMulti -bool true
-

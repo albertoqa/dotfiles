@@ -44,6 +44,7 @@ brew install pv                   # show progress bar in pipelines
 brew install iftop                # show network usage (similar to top)
 brew install unrar                # decompress rar files
 brew install dockutil             # manage dock items from the terminal
+brew install gpg                  # free implementation of the OpenPGP
 
 ###############################################################################
 # Cask                                                                        #
@@ -103,6 +104,7 @@ brew cask install icons8
 brew cask install image2icon
 brew cask install imagealpha
 brew cask install imageoptim
+brew cask install licecap
 
 ###############################################################################
 # Development                                                                 #
