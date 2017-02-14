@@ -226,3 +226,8 @@ function o() {
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+
+# recursive git status on the current working directory
+function rgit() {
+	find . -type d -name '.git' | while read dir ; do sh -c "cd $dir/../ && git status -s | grep -q [azAZ09] && echo ---- ${dir//\.git/} ---- && git status -s" ; done
+}
