@@ -9,8 +9,6 @@ alias g="git"
 alias h="history"
 alias j="jobs"
 
-alias aliases="less ~/.aliases"
-
 # Start sonar server for Temperatus project
 # alias startSonar="cd /Users/alberto/Developer/temperatus && mysql.server start && sonar start && sonar-runner"
 
@@ -29,6 +27,9 @@ alias la="ls -laFh ${colorflag}"
 
 # List only directories
 alias lsd="ls -lFh ${colorflag} | grep --color=never '^d'"
+
+# List all dot files
+alias l.='ls -d ${colorflag} .*'
 
 # Always use color output for `ls`
 alias ls="command ls ${colorflag}"
