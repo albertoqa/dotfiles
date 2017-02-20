@@ -357,6 +357,9 @@ if [ ! -d ~/Developer ]; then
 	mkdir ~/Developer
 fi;
 
+# Create local database to enable locate/find commands to search on the system
+sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.locate.plist
+
 ###############################################################################
 # Desktop                        	                                      #
 ###############################################################################
