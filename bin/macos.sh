@@ -261,12 +261,11 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint2 -bool true
 
 echo "Configuring sound preferences"
 
-# Show volume in menu bar
+# Show volume in menu bar and hide clock/calendar (I use day-o)
 defaults write com.apple.systemuiserver menuExtras -array \
 	"/System/Library/CoreServices/Menu Extras/Volume.menu" \
 	"/System/Library/CoreServices/Menu Extras/AirPort.menu" \
-	"/System/Library/CoreServices/Menu Extras/Battery.menu" \
-	"/System/Library/CoreServices/Menu Extras/Clock.menu"
+	"/System/Library/CoreServices/Menu Extras/Battery.menu"
 
 defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -bool true
 

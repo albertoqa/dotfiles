@@ -71,3 +71,16 @@ defaults write org.m0k.transmission CheckQuitDownloading -bool true
 
 # Display a window when opening a torrent file only if there are multiple files
 defaults write org.m0k.transmission DownloadAskMulti -bool true
+
+###############################################################################
+# Day-O                                                                       #
+###############################################################################
+
+# Set preferred date/time format
+defaults write com.shauninman.Day-O format -string "E d MMM H:mm"
+
+# Don't show the icon
+defaults write com.shauninman.Day-O showIcon -integer 0
+
+# Set position in the bar to the first element (0)
+defaults write com.shauninman.Day-O "NSStatusItem Preferred Position Item-0" -float 136.5
