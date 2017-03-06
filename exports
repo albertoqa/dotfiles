@@ -23,3 +23,5 @@ export SONAR_RUNNER_HOME="/usr/local/Cellar/sonar-runner/2.5/libexec"
 #export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_112.jdk/Contents/Home"
 
 export JENV_ROOT=/usr/local/var/jenv
+
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
