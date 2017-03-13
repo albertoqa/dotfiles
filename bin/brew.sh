@@ -153,6 +153,8 @@ brew cask install android-studio
 brew cask install textwrangler
 brew cask install netbeans-java-ee
 brew cask install mysqlworkbench
+brew cask install scenebuilder
+
 brew cask install day-o
 
 sudo gem install cocoapods
@@ -191,3 +193,6 @@ defaults write com.apple.dock persistent-apps -array-add '<dict><key>tile-data</
 
 # Cleanup
 brew cleanup
+
+# TODO
+echo eclipse, office, parallels, pixelmator, popcorntime, promotee
