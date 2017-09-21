@@ -45,6 +45,8 @@ brew install iftop                # show network usage (similar to top)
 brew install unrar                # decompress rar files
 brew install dockutil             # manage dock items from the terminal
 brew install gpg                  # free implementation of the OpenPGP
+brew install thefuck		  # correct previous console command
+brew install sshrc		  # sources the .sshrc file after logging in remotely
 
 ###############################################################################
 # Cask                                                                        #

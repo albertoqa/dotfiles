@@ -86,3 +86,16 @@ alias reload="exec $SHELL -l"
 
 # javapackager alias
 alias javapackager="$JAVA_HOME/bin/javapackager"
+
+# Very frequently used. Use: psg java
+alias psg='ps aux | grep --color=always -i $1'
+
+# Pipe content from clipboard and format it as a beautiful JSON
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+        alias paste='xclip -selection c -o'
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+        alias paste='pbpaste'
+fi
+
+alias pjson='paste | python -m json.tool'
+

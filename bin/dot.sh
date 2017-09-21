@@ -12,7 +12,7 @@
 dotfiles_dir="$(cd "$(dirname "$0")"; pwd)/../"
 
 # list of files to symlink in homedir
-dotfiles="aliases bash_profile bash_prompt bashrc exports extras functions gitattributes gitconfig gitignore inputrc path"
+dotfiles="aliases bash_profile bash_prompt bashrc exports extras functions gitattributes gitconfig gitignore inputrc path vimrc"
 
 echo "Getting dotfiles ready!"
 
