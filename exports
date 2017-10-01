@@ -24,4 +24,5 @@ export SONAR_RUNNER_HOME="/usr/local/Cellar/sonar-runner/2.5/libexec"
 
 export JENV_ROOT=/usr/local/var/jenv
 
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export JAVA_HOME='/usr/libexec/java_home -v 1.8'
+export KAFKA_HOME=/opt/kafka_2.11-0.11.0.1/

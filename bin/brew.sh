@@ -94,7 +94,7 @@ brew cask install flux
 brew cask install the-unarchiver
 
 # General
-brew cask install google-drive
+brew cask install google-backup-and-sync
 brew cask install google-chrome
 brew cask install firefox
 brew cask install spotify
